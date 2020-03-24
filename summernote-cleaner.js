@@ -157,14 +157,18 @@
         'summernote.paste': function (we, e) {
           if (options.cleaner.action == 'both' || options.cleaner.action == 'paste') {
             e.preventDefault();
+
             var ua   = window.navigator.userAgent;
             var msie = ua.indexOf("MSIE ");
                 msie = msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./);
             var ffox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
             if (msie)
               var text = window.clipboardData.getData("Text");
-            else
+            else {
               var text = e.originalEvent.clipboardData.getData(options.cleaner.keepHtml ? 'text/html' : 'text/plain');
+              if (options.cleaner.keepHtml && !text)
+                text = e.originalEvent.clipboardData.getData('text/plain').replace(/\n/g, '<br/>');
+            }
             if (text) {
               if (msie || ffox)
                 setTimeout(function () {

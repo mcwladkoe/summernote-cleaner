@@ -158,7 +158,7 @@
         'summernote.paste': function (we, e) {
           if (options.cleaner.action == 'both' || options.cleaner.action == 'paste') {
             e.preventDefault();
-            const text = e.originalEvent.clipboardData.getData(options.cleaner.keepHtml ? 'text/html' : 'text/plain') || e.originalEvent.clipboardData.getData("Text");
+            var text = e.originalEvent.clipboardData.getData(options.cleaner.keepHtml ? 'text/html' : 'text/plain') || e.originalEvent.clipboardData.getData("Text");
             document.execCommand(options.cleaner.keepHtml ? 'insertHtml' : 'insertText', false, cleanText(text));
           }
         }

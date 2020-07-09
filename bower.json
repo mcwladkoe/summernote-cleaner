@@ -1,6 +1,6 @@
 {
     "name": "summernote-cleaner",
-    "version": "1.0.0r1",
+    "version": "1.0.0r2",
     "description": "A plugin for the Summernote WYSIWYG editor.",
     "main": [
         "./summernote-cleaner.js"
